@@ -41,7 +41,7 @@ mkdir -p build
 package() {
 cd $srcdir/calamares/build
 	make DESTDIR="$pkgdir" install
-cd $srcdir/calamares-alphaos
+cd $srcdir/calamares-alphaos/conf
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
 	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/services.conf"
@@ -53,5 +53,15 @@ cd $srcdir/calamares-alphaos
 	rm -r "$pkgdir/usr/lib/calamares/modules/dummyprocess/"
 	rm -r "$pkgdir/usr/lib/calamares/modules/dummypython/"
 	rm "$pkgdir/usr/share/calamares/modules/dummypython.conf"
+mkdir -p /usr/share/calamares/branding/alphaos
+        install -Dm644 "../src/branding/alphaos/branding.desc" "$pkgdir/usr/share/calamares/branding/alphaos/branding.desc"
+      install -Dm644 "../src/branding/alphaos/logo.png" "$pkgdir/usr/share/calamares/branding/alphaos/logo.png"
+      install -Dm644 "../src/branding/alphaos/show.qml" "$pkgdir/usr/share/calamares/branding/alphaos/show.qml"
+      install -Dm644 "../src/branding/alphaos/slide.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide.png"
+ install -Dm644 "../src/branding/alphaos/slide2.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide2.png"
+ install -Dm644 "../src/branding/alphaos/slide3.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide3.png"
+ install -Dm644 "../src/branding/alphaos/slide4.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide4.png"
+ install -Dm644 "../src/branding/alphaos/slide5.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide5.png"
+ install -Dm644 "../src/branding/alphaos/squid.png" "$pkgdir/usr/share/calamares/branding/alphaos/squid.png"
 }
 
