@@ -1,0 +1,36 @@
+pkgname=alphaos-multimedia
+pkgver=20150531
+pkgrel=1
+pkgdesc="This provides to Alpha OS multimedia."
+arch=('i686' 'x86_64')
+url="https://github.com/g97iulio1609/alphaos-multimedia"
+license=('GPL3')
+depends=('a52dec'
+'ladspa'
+'libcdaudio'
+'libdc1394'
+'liblrdf'
+'libmad'
+'libmpcdec'
+'libmpeg2'
+'libsidplay'
+'musicbrainz'
+'rtmpdump'
+'gstreamer0.10'
+'gstreamer0.10-bad'
+'gstreamer0.10-bad-plugins'
+'gstreamer0.10-base'
+'gstreamer0.10-base-plugins'
+'gstreamer0.10-ffmpeg'
+'gstreamer0.10-good'
+'gstreamer0.10-good-plugins'
+'gstreamer0.10-ugly'
+'gstreamer0.10-ugly-plugins'
+'gst-libav')
+
+
+pkgver(){
+	date +%Y%m%d
+}
+# vim:set ts=2 sw=2 et:
+

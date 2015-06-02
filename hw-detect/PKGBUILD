@@ -1,0 +1,17 @@
+pkgname=hardware-detection
+pkgver=1.2
+pkgrel=1
+pkgdesc="Hardware detection scripts"
+arch=('x86_64')
+depends=('bc' 'util-linux' 'chd-nvidia' 'dmidecode') 
+license=('GPL')
+source=("git+https://github.com/g97iulio1609/hardware-detection.git")
+md5sums=('SKIP')
+
+
+
+
+package(){
+make
+	make install DESTDIR="${pkgdir}"
+}
