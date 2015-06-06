@@ -1,23 +1,71 @@
-pkgname=alphaos-release
-_pointver=1.0
+pkgname=calamares
+_pointver=1.28
 pkgver=1.0.$_pointver
-pkgdesc='Alpha OS Base Information'
+pkgrel=1
+pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 license=(GPL)
+url="https://github.com/calamares"
 license=('LGPL')
-makedepends=('git')
-replaces=('lsb-release')
-provides=(alphaos-release')
-source=("git+https://github.com/g97iulio1609/alphaos-release.git")
-md5sums=('SKIP')
+depends=('kconfig' 'kcoreaddons' 'ki18n' 'solid' 'yaml-cpp' 'parted' 'boost' 'hwinfo' 'qt5-svg' 'polkit-qt5')
+makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
+source=(git+https://github.com/calamares/calamares.git
+git+https://github.com/g97iulio1609/calamares-alphaos.git)
+md5sums=('SKIP'
+'SKIP')
+sha256sums=('SKIP'
+'SKIP')
+
+
+prepare(){
+cd $srcdir/calamares
+git submodule init
+git submodule update
+mkdir -p src/modules/partition/
+cd src/modules/partition/
+cd partitionmanager
+git checkout calamares
+}
+build() {
+cd calamares
+mkdir -p build
+	cd build
+        cmake .. \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              -DWITH_PARTITIONMANAGER=1 \
+              -DCMAKE_INSTALL_LIBDIR=lib
+        make
+}
 
 package() {
-
- install -Dm644 "$src/arch-release" "$pkgdir/etc/arch-release"
- install -Dm644 "$src/hostname" "$pkgdir/etc/hostname"
- install -Dm644 "$src/hosts" "$pkgdir/etc/hosts"
- install -Dm644 "$src/issue" "$pkgdir/etc/issue"
- install -Dm644 "$src/lsb-release" "$pkgdir/etc/lsb-release"
- install -Dm644 "$src/os-release" "$pkgdir/etc/os-release"
+cd $srcdir/calamares/build
+	make DESTDIR="$pkgdir" install
+cd $srcdir/calamares-alphaos/conf
+	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
+	install -Dm644 "../conf/user.conf" "$pkgdir/usr/share/calamares/modules/user.conf"
+	install -Dm644 "../conf/removeuser.conf" "$pkgdir/usr/share/calamares/modules/removeuser.conf"
+	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
+	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/services.conf"
+	install -Dm644 "../conf/settings.conf" "$pkgdir/usr/share/calamares/settings.conf"
+	install -Dm644 "../conf/unpackfs.conf" "$pkgdir/usr/share/calamares/modules/unpackfs.conf"
+	mkdir -p /usr/share/icons/
+	install -Dm644 "../data/alphaos-icon.png" "$pkgdir/usr/share/icons/calamares.png"
+	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummyprocess/"
+	rm -r "$pkgdir/usr/lib/calamares/modules/dummypython/"
+	rm "$pkgdir/usr/share/calamares/modules/dummypython.conf"
+mkdir -p /usr/share/calamares/branding/alphaos
+        install -Dm644 "../src/branding/alphaos/branding.desc" "$pkgdir/usr/share/calamares/branding/alphaos/branding.desc"
+      install -Dm644 "../src/branding/alphaos/logo.png" "$pkgdir/usr/share/calamares/branding/alphaos/logo.png"
+      install -Dm644 "../src/branding/alphaos/show.qml" "$pkgdir/usr/share/calamares/branding/alphaos/show.qml"
+      install -Dm644 "../src/branding/alphaos/slide.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide.png"
+ install -Dm644 "../src/branding/alphaos/slide2.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide2.png"
+ install -Dm644 "../src/branding/alphaos/slide3.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide3.png"
+ install -Dm644 "../src/branding/alphaos/slide4.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide4.png"
+ install -Dm644 "../src/branding/alphaos/slide5.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide5.png"
+ install -Dm644 "../src/branding/alphaos/squid.png" "$pkgdir/usr/share/calamares/branding/alphaos/squid.png"
+ install -Dm644 "../src/modules/postcfg/main.py" "$pkgdir/usr/lib/calamares/modules/postcfg/main.py"
+ install -Dm644 "../src/modules/postcfg/module.desc" "$pkgdir/usr/lib/calamares/modules/postcfg/module.desc"
 }
 
