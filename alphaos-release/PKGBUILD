@@ -1,4 +1,3 @@
-
 pkgname=alphaos-release
 pkgver=1.0
 pkgrel=1
@@ -10,25 +9,8 @@ makedepends=('git')
 source=(git+https://github.com/g97iulio1609/alphaos-release.git)
 md5sums=('SKIP')
 sha256sums=('SKIP')
-provides=('alphaos-release')
-replaces=('lsb-release')
+provides=('lsb-release')
+conflicts=('lsb-release')
+install=release.install
 
-
-prepare(){
-sudo rm -rf /etc/arch-release
-sudo rm -rf /etc/hostname
-sudo rm -rf /etc/hosts
-sudo rm -rf /etc/issue
-sudo rm -rf /etc/lsb-release
-sudo rm -rf /etc/os-release
-}
-
-package() {
- install -Dm644 "$srcdir/alphaos-release/arch-release" "$pkgdir/etc/arch-release"
- install -Dm644 "$srcdir/alphaos-release/hostname" "$pkgdir/etc/hostname"
- install -Dm644 "$srcdir/alphaos-release/hosts" "$pkgdir/etc/hosts"
- install -Dm644 "$srcdir/alphaos-release/issue" "$pkgdir/etc/issue"
- install -Dm644 "$srcdir/alphaos-release/lsb-release" "$pkgdir/etc/lsb-release"
- install -Dm644 "$srcdir/alphaos-release/os-release" "$pkgdir/etc/os-release"
-}
 

@@ -1,0 +1,71 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+pre_install() {
+
+rm -rf /etc/arch-release
+rm -rf /etc/hostname
+rm -rf /etc/hosts
+rm -rf /etc/lsb-release
+}
+
+post_install() {
+echo "Alpha OS release 2015.06 (Prometheus)">>/etc/arch-release
+#hostname
+echo "AlphaOS">>/etc/hostname
+echo "
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1	localhost.localdomain	localhost	alphaos
+::1		localhost.localdomain	localhost	alphaos
+
+# End of file
+">>/etc/hosts ; 
+echo "LSB_VERSION=1.4
+DISTRIB_ID=AlphaOS
+DISTRIB_ID_LIKE=Arch
+DISTRIB_RELEASE=2015.06
+DISTRIB_DESCRIPTION=Alpha OS Linux
+">>/etc/lsb-release ;
+
+}
+
+
+pre_upgrade() {
+
+rm -rf /etc/arch-release
+rm -rf /etc/hostname
+rm -rf /etc/hosts
+rm -rf /etc/lsb-release
+}
+
+
+post_upgrade() {
+echo "Alpha OS release 2015.06 (Prometheus)">>/etc/arch-release
+#hostname
+echo "AlphaOS">>/etc/hostname
+echo "
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1	localhost.localdomain	localhost	alphaos
+::1		localhost.localdomain	localhost	alphaos
+
+# End of file
+">>/etc/hosts ; 
+echo "LSB_VERSION=1.4
+DISTRIB_ID=AlphaOS
+DISTRIB_ID_LIKE=Arch
+DISTRIB_RELEASE=2015.06
+DISTRIB_DESCRIPTION=Alpha OS Linux
+">>/etc/lsb-release ;
+
+}
+
+

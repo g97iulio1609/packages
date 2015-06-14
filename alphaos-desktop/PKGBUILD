@@ -1,0 +1,40 @@
+pkgname=alphaos-desktop
+pkgver=20150614
+pkgrel=1
+pkgdesc="This provides to Alpha OS desktop."
+arch=('i686' 'x86_64')
+url="https://github.com/g97iulio1609/alphaos-desktop"
+license=('GPL3')
+depends=('gnome-shell'
+'gnome-control-center'
+'nautilus'
+'gedit'
+'gnome-maps'
+'gnome-weather'
+'gnome-photos'
+'eog'
+'gnome-calendar'
+'gnome-contacts'
+'gnome-software'
+'noise'
+'audience'
+'google-chrome'
+'lightdm'
+'alphaos-greeter'
+'geary'
+'libreoffice-fresh'
+'simple-scan'
+'alphaos-dock'
+'gnome-shell-extension-status-menu-buttons'
+'alphaos-default-settings'
+'alphaos-ux'
+'alphaos-release'
+'alphaos-apps-settings'
+'alphaos-wallpapers'
+)
+
+
+pkgver(){
+	date +%Y%m%d
+}
+# vim:set ts=2 sw=2 et:

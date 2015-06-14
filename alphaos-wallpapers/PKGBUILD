@@ -1,0 +1,20 @@
+# Maintainer: Giulio Leone <giulio97.leone@gmail.com>
+
+pkgname=alphaos-wallpapers
+pkgver=1.0
+pkgrel=1
+pkgdesc="The default wallpapers for Alpha OS"
+arch=('any')
+license=('CCPL:by-nc-sa')
+source=("git+https://github.com/g97iulio1609/alphaos-wallpapers.git")
+sha256sums=('SKIP')
+
+package() {
+cd $srcdir/$pkgname/wallpapers
+  install -d "${pkgdir}/usr/share/backgrounds"
+  install -m644 *.jpg "${pkgdir}/usr/share/backgrounds"
+  install -m644 *.png "${pkgdir}/usr/share/backgrounds"
+cd $srcdir/$pkgname
+  install -d "${pkgdir}/usr/share/gnome-background-properties"
+  install -m644 alphaos-wallpapers.xml "${pkgdir}/usr/share/gnome-background-properties/"
+}

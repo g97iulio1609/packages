@@ -1,6 +1,5 @@
 pkgname=calamares
-_pointver=1.28
-pkgver=1.0.$_pointver
+pkgver=1..0
 pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
@@ -43,7 +42,7 @@ cd $srcdir/calamares/build
 	make DESTDIR="$pkgdir" install
 cd $srcdir/calamares-alphaos/conf
 	install -Dm644 "../conf/bootloader.conf" "$pkgdir/usr/share/calamares/modules/bootloader.conf"
-	install -Dm644 "../conf/user.conf" "$pkgdir/usr/share/calamares/modules/user.conf"
+	install -Dm644 "../conf/users.conf" "$pkgdir/usr/share/calamares/modules/users.conf"
 	install -Dm644 "../conf/removeuser.conf" "$pkgdir/usr/share/calamares/modules/removeuser.conf"
 	install -Dm644 "../conf/initcpio.conf" "$pkgdir/usr/share/calamares/modules/initcpio.conf"
 	install -Dm644 "../conf/services.conf" "$pkgdir/usr/share/calamares/services.conf"
@@ -63,7 +62,6 @@ mkdir -p /usr/share/calamares/branding/alphaos
  install -Dm644 "../src/branding/alphaos/slide2.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide2.png"
  install -Dm644 "../src/branding/alphaos/slide3.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide3.png"
  install -Dm644 "../src/branding/alphaos/slide4.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide4.png"
- install -Dm644 "../src/branding/alphaos/slide5.png" "$pkgdir/usr/share/calamares/branding/alphaos/slide5.png"
  install -Dm644 "../src/branding/alphaos/squid.png" "$pkgdir/usr/share/calamares/branding/alphaos/squid.png"
  install -Dm644 "../src/modules/postcfg/main.py" "$pkgdir/usr/lib/calamares/modules/postcfg/main.py"
  install -Dm644 "../src/modules/postcfg/module.desc" "$pkgdir/usr/lib/calamares/modules/postcfg/module.desc"

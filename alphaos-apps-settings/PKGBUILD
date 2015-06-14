@@ -1,0 +1,25 @@
+# Maintainer: Giulio Leone <giulio97.leone@gmail.com>
+pkgname=alphaos-apps-settings
+pkgver=1.1
+pkgrel=1
+pkgdesc="This provides to Alpha OS UX."
+arch=('i686' 'x86_64')
+url="https://github.com/g97iulio1609/alphaos-apps-settings"
+license=('LGPLv2+')
+depends=('gnome-shell')
+makedepends=('git')
+provides=('alphaos-apps-settings')
+source=("git+https://github.com/g97iulio1609/alphaos-apps-settings.git")
+md5sums=('SKIP')
+
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    mkdir -p "${pkgdir}"/etc/skel/.config
+    cp -R $srcdir/$pkgname/google-chrome "${pkgdir}"/etc/skel/.config/google-chrome
+    cp -R $srcdir/$pkgname/libreoffice "${pkgdir}"/etc/skel/.config/libreoffice
+    mkdir -p "${pkgdir}"/etc/skel/.local/share
+    cp -R $srcdir/$pkgname/applications "${pkgdir}"/etc/skel/.local/share/applications
+
+}

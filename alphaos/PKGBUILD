@@ -1,0 +1,17 @@
+# Maintainer: Giulio Leone <giulio97.leone@gmail.com>
+pkgname=alphaos
+pkgver=1.1
+pkgrel=1
+pkgdesc="This provides to Alpha OS."
+arch=('i686' 'x86_64')
+url="https://github.com/g97iulio1609/alphaos"
+license=('LGPLv2+')
+depends=('alphaos-desktop'
+'alphaos-network'
+'alphaos-graphics'
+'alphaos-system-utils'
+'alphaos-printer'
+'alphaos-multimedia')
+provides=('alphaos')
+
+
