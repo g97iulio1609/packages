@@ -1,4 +1,4 @@
-set(PACKAGE_VERSION "1.1.0rc2.20150620-git-master-f54ab5b")
+set(PACKAGE_VERSION "1.1.0.20150628-git-master-4ea0cba")
 
 # Check whether the requested PACKAGE_FIND_VERSION is compatible
 if("${PACKAGE_VERSION}" VERSION_LESS "${PACKAGE_FIND_VERSION}")

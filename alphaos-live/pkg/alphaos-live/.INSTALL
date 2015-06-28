@@ -1,0 +1,16 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you dont need (and this header).
+
+post_install() {
+chmod 700 /root
+chown root:root /etc/sudoers 
+chmod 440 /etc/sudoers
+chown -R root:root /etc/sudoers.d
+chmod  755 /etc/sudoers.d 
+chmod  440 /etc/sudoers.d/*
+chmod 777 /etc/xdg/autostart/calamares.desktop
+}
+
+
+
