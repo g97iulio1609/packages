@@ -1,0 +1,29 @@
+# Maintainer: Giulio Leone <giulio97.leone@gmail.com>
+pkgname=alphaos-live
+pkgver=1.1
+pkgrel=1
+pkgdesc="This provides to Alpha OS UX."
+arch=('i686' 'x86_64')
+url="https://github.com/g97iulio1609/alphaos-live"
+license=('LGPLv2+')
+makedepends=('git')
+provides=('alphaos-live')
+source=("git+https://github.com/g97iulio1609/alphaos-live.git")
+md5sums=('SKIP')
+install=live.install
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+install -Dm644 "sudoers.d/g_wheel" "$pkgdir/etc/sudoers.d/g_wheel"
+install -Dm644 "sudoers" "$pkgdir/etc/sudoers"
+install -Dm644 "calamares.desktop" "$pkgdir/etc/xdg/autostart/calamares.desktop"
+install -Dm644 "sudoers.new" "$pkgdir/etc/sudoers.new"
+install -Dm644 "lightdm/keys.conf" "$pkgdir/etc/lightdm/keys.conf"
+install -Dm644 "lightdm/lightdm.conf.new" "$pkgdir/etc/lightdm/lightdm.conf.new"
+install -Dm644 "lightdm/lightdm-webkit2-greeter.conf" "$pkgdir/etc/lightdm/lightdm-webkit2-greeter.conf"
+install -Dm644 "lightdm/lightdm-webkit2-greeter.conf.pacnew" "$pkgdir/etc/lightdm/lightdm-webkit2-greeter.conf.pacnew"
+install -Dm644 "lightdm/users.conf" "$pkgdir/etc/lightdm/users.conf"
+install -Dm644 "lightdm/Xsession" "$pkgdir/etc/lightdm/Xsession"
+
+}
